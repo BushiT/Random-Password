@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Password</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+  <div class="min-h-screen bg-gradient-to-r from-teal-800 to-slate-500 px-20 relative">
+    <div class="absolute top-1/4">
+        <h2 class="text-white text-5xl font-semibold mb-5">Generate A <br><span class="text-green-500 border-b-2 border-green-600">Random Password</span></h2>
+         <div class="w-96 h-12 shadow-md relative">
+          <input class="outline-none pl-3 w-96 h-12 rounded-sm" placeholder="Password" id="password">
+          <button class="absolute right-2 top-3" onclick="copyP()">copy&</button>
+         </div><br>
+        <button class="text-white bg-green-700 w-44 mt-4 p-3 rounded-md text-base shadow-lg hover:bg-transparent hover:border-2 hover:border-green-500" id="button" onclick="generate()">Generate Password</button>
+    </div>
+  </div>
+
+<script>
+   const PasswordBox = document.querySelector("#password");
+   const Button = document.querySelector("#button")
+
+    const UpperCase = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    const LowerCase = "qwertyuiopasdfghjklzxcvbnm";
+    const Number = "0123456789";
+    const Symbol ="@#$%*"
+    const length =12;
+
+     const allCarc =UpperCase + LowerCase + Number + Symbol;
+
+    function generate(){
+        let password ="";
+        
+
+        while(length > password.length){
+         password +=allCarc[Math.floor(Math.random() * allCarc.length)];
+        }
+        PasswordBox.value = password;
+    }
+    function copyP(){
+       password.select();
+       document.execCommand("copy")
+       alert("password is copy sucessfully")
+    }
+</script>
+
+</body>
+</html>
